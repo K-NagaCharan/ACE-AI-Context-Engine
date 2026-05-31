@@ -1,6 +1,6 @@
 {
   "name": "ace-track",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "AI Context Engine CLI for tracking and transferring project context across AI tools",
   "main": "bin/cli.js",
   "bin": {
