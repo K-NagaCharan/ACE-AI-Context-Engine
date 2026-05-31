@@ -34,7 +34,7 @@ async function getCommitsSince(lastCommit, limit = 5) {
 
   // First run
   if (!lastCommit) {
-    log = await git.log({ maxCount: 1 });
+    log = await git.log({ maxCount: limit });
   } else {
     log = await git.log({
       from: lastCommit,
@@ -52,10 +52,10 @@ async function getCommitsSince(lastCommit, limit = 5) {
   // Limit commit count
   if (commits.length > limit) {
     console.log(
-      `Warning: ${commits.length} commits found, processing only latest ${limit}`
+      `Warning: ${commits.length} commits found, processing only oldest ${limit}`
     );
 
-    commits = commits.slice(0, limit);
+    commits = commits.slice(-limit);
   }
 
   return commits;

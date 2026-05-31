@@ -13,7 +13,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "echo \"No tests yet\""
+    "test": "jest"
   },
   "keywords": [
     "ai",
@@ -46,5 +46,8 @@
     "dotenv": "^17.4.2",
     "openai": "^6.37.0",
     "simple-git": "^3.36.0"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2"
   }
 }

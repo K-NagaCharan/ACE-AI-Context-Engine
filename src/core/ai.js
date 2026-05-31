@@ -64,12 +64,8 @@ ${context.diff}
     response.choices[0].message.content;
 
   try {
-    const cleaned = text
-    .replace(/```json/g, "")
-    .replace(/```/g, "")
-    .trim();
-
-    // console.log(text);
+    const match = text.match(/\{[\s\S]*\}/);
+    const cleaned = match ? match[0] : text;
     return JSON.parse(cleaned);
   } catch {
     throw new Error(

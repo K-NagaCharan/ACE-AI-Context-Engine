@@ -80,6 +80,14 @@ ace-track
 
 from anywhere on your system.
 
+## Running Tests
+
+ACE Track has a robust Jest test suite to verify internal logic. Run the tests with:
+
+```bash
+npm test
+```
+
 ---
 
 # Supported AI Providers
@@ -320,7 +328,7 @@ This avoids:
 
 ACE ignores its own metadata files during analysis.
 
-**For this to happen, make sure to add '.ace/' to the '.gitignore' file**
+**During initialization, `ace-track init` automatically adds `.ace/` to your `.gitignore` file to ensure metadata remains isolated.**
 
 This prevents recursive summaries like:
 

@@ -8,25 +8,25 @@ function generateMarkdown(projectData) {
     if (entries.length === 0) {
         return `# ACE Project Export
 
-        ## Project Information
+## Project Information
 
-        Name: ${project.name}
+Name: ${project.name}
 
-        Description:
-        ${project.description}
+Description:
+${project.description}
 
-        Tech Stack:
-        ${project.tech_stack.join(", ")}
+Tech Stack:
+${project.tech_stack.join(", ")}
 
-        ---
+---
 
-        No development history available yet.
+No development history available yet.
 
-        Run:
-        ace-track update
+Run:
+ace-track update
 
-        after making real project commits.
-        `;
+after making real project commits.
+`;
     }
 
   let output = `# ACE Project Export

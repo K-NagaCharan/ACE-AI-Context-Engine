@@ -73,5 +73,27 @@ module.exports = async function init(options) {
     max_commits_per_update: 5,
   });
 
+  // Handle .gitignore to prevent committing .ace/
+  const gitignorePath = path.join(root, ".gitignore");
+  const fs = require("fs");
+  try {
+    if (fs.existsSync(gitignorePath)) {
+      const content = fs.readFileSync(gitignorePath, "utf8");
+      const lines = content.split(/\r?\n/).map(line => line.trim());
+      const isIgnored = lines.some(line => line === ".ace" || line === ".ace/");
+      if (!isIgnored) {
+        // Ensure we append with proper newlines
+        const prefix = content.endsWith("\n") ? "" : "\n";
+        fs.appendFileSync(gitignorePath, `${prefix}\n# ACE Project Memory\n.ace/\n`);
+        console.log(" Added .ace/ to .gitignore");
+      }
+    } else {
+      fs.writeFileSync(gitignorePath, "# ACE Project Memory\n.ace/\n");
+      console.log(" Created .gitignore and added .ace/");
+    }
+  } catch (err) {
+    console.log("Warning: Failed to update .gitignore automatically. Please add '.ace/' to .gitignore manually.");
+  }
+
   console.log(" ACE initialized successfully!");
 };

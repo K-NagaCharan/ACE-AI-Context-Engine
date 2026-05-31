@@ -74,6 +74,9 @@ module.exports = async function update(options) {
     return;
   }
 
+  // Reverse commits to process in chronological order (oldest first)
+  commits.reverse();
+
   // Process commits
   let processedCount = 0;
   for (const commit of commits) {
@@ -106,9 +109,9 @@ module.exports = async function update(options) {
     processedCount++;
   }
 
-  // Update config
+  // Update config to the newest commit in the batch
   config.last_processed_commit =
-    commits[0].hash;
+    commits[commits.length - 1].hash;
 
   // Save files
   writeJSON(projectFile, projectData);
