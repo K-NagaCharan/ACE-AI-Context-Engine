@@ -53,6 +53,16 @@ ACE Track converts raw Git history into structured semantic memory.
 
 # Installation
 
+## Global Installation
+
+You can install ACE Track globally directly using npm:
+
+```bash
+npm install -g ace-track
+```
+
+Alternatively, you can install and run it locally from the source:
+
 ## Clone Repository
 
 ```bash
